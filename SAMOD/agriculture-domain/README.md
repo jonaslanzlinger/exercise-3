@@ -27,10 +27,13 @@ The tractors are operated by two autonomous agents: An agent that monitors the c
 
 ## Glossary of terms
 - **Farm**: A plot of land devoted to the growing of crops.
-- **Tractor**: An automotive vehicle that offers affordances to agents for managing a farm.
-- **ReadSoilMoistureAffordance**: An affordance offerred by the environment to agents for reading the moisture level of soil.
-- **IrrigateAffordance**: An affordance offerred by the environment to agents for irrigating the soil.
+- 4 land sections (coordinates of X1, Y1, X1, X2 for 1 section)
+- crops types (wheat, corn) (moisture levels: wheat-120, corn-80)
+- **Tractor**: An automotive vehicle that offers affordances to agents for managing a farm. (2 tractors)
+- **ReadSoilMoistureAffordance**: An affordance offerred by the environment to agents for reading the moisture level of soil. (probably the 4 section parameter coordinates)
+- **IrrigateAffordance**: An affordance offerred by the environment to agents for irrigating the soil. (probably the 4 section coordinates)
 - **Coordinates**: A set of 4 coordinates [X1,Y1,X2,Y2] that define the opposite corners of a square section at points [X1,Y1] and [X2,Y2].
 - **SoilMoisture**: The level of moisture in soil.
+- 2 Agents? (is this even needed?!)
 - ...
 - *Complete the glossary for definiting terms required to model the motivating scenario of the domain. These terms will then be formally defined in your TBox.*
