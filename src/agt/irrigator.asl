@@ -1,7 +1,7 @@
 // irrigator_agent
 
 // Add your graph repo location below
-repo_location("https://sandbox-graphdb.interactions.ics.unisg.ch/repositories/was-exercise-3-danai").
+repo_location("https://sandbox-graphdb.interactions.ics.unisg.ch/repositories/was-exercise-3-jonas").
 
 !start.
 
