@@ -39,7 +39,9 @@ repo_location("https://sandbox-graphdb.interactions.ics.unisg.ch/repositories/wa
     querySectionCoordinates(Section, Coordinates);
     .print("Queried coordinates [X1,Y1,X2,Y2] of section: ", Coordinates);
 
-    invokeAction("https://was-course.interactions.ics.unisg.ch/farm-ontology#ReadSoilMoistureAffordance", ["https://www.w3.org/2019/wot/json-schema#ArraySchema"], Coordinates, ["https://was-course.interactions.ics.unisg.ch/farm-ontology#SoilMoisture"], CurrentMoistureLevel);
+    invokeAction("https://was-course.interactions.ics.unisg.ch/farm-ontology#ReadSoilMoistureAffordance", 
+                ["https://www.w3.org/2019/wot/json-schema#ArraySchema"], Coordinates, 
+                ["https://was-course.interactions.ics.unisg.ch/farm-ontology#SoilMoisture"], CurrentMoistureLevel);
     .print("Read moisture in section: ", CurrentMoistureLevel);
 
     queryCropOfSection(Section, Crop);
@@ -49,13 +51,14 @@ repo_location("https://sandbox-graphdb.interactions.ics.unisg.ch/repositories/wa
     queryRequiredMoisture(Crop, RequiredMoistureLevel);
     .print("Queried required moisture level of crop: ", RequiredMoistureLevel);
 
-    !check_moisture_sufficiency(Coordinates, RequireMoistureLevel, CurrentMoistureLevel);
+    !check_moisture_sufficiency(Coordinates, RequiredMoistureLevel, CurrentMoistureLevel);
 
     !monitor_section(RemainingSections).
 
-+!check_moisture_sufficiency(Coordinates, RequireLevel, CurrentLevel) : RequiredLevel > CurrentLevel <-
+// pack the RequiredLevel in an ArraySchema to actually be able to compase with CurrentLevel value
++!check_moisture_sufficiency(Coordinates, RequiredLevel, CurrentLevel) : [RequiredLevel] > CurrentLevel <-
     .print("Detected low moisture in: ", Coordinates, ". Informing irrigator.");
     .send(irrigator, tell, low_moisture(Coordinates)).
 
-+!check_moisture_sufficiency(Coordinates, RequireLevel, CurrentLevel) : true <-
++!check_moisture_sufficiency(Coordinates, RequiredLevel, CurrentLevel) : true <-
     .print("Detected sufficient moisture in: ", Coordinates).

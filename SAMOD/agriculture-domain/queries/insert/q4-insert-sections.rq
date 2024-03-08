@@ -1,0 +1,84 @@
+PREFIX was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#>
+PREFIX hmas: <https://purl.org/hmas/>
+PREFIX td: <https://www.w3.org/2019/wot/td#>
+PREFIX wotsec: <https://www.w3.org/2019/wot/security#>
+PREFIX htv: <http://www.w3.org/2011/http#>
+PREFIX hctl: <https://www.w3.org/2019/wot/hypermedia#>
+PREFIX js: <https://www.w3.org/2019/wot/json-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+    GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#>
+    {
+        ?coordinates1 a td:Thing, was:Coordinates;
+            td:title "A coordinate within the farm land.";
+  			td:hasBase <http://localhost:1080/api/coordinates/1/>;
+        	was:x1 "0";
+            was:y1 "0";
+            was:x2 "1";
+            was:y2 "1".
+        ?coordinates2 a td:Thing, was:Coordinates;
+            td:title "A coordinate within the farm land.";
+  			td:hasBase <http://localhost:1080/api/coordinates/2/>;
+        	was:x1 "1";
+            was:y1 "0";
+            was:x2 "2";
+            was:y2 "1".
+        ?coordinates3 a td:Thing, was:Coordinates;
+            td:title "A coordinate within the farm land.";
+  			td:hasBase <http://localhost:1080/api/coordinates/3/>;
+        	was:x1 "0";
+            was:y1 "1";
+            was:x2 "1";
+            was:y2 "2".
+        ?coordinates4 a td:Thing, was:Coordinates;
+            td:title "A coordinate within the farm land.";
+  			td:hasBase <http://localhost:1080/api/coordinates/4/>;
+        	was:x1 "1";
+            was:y1 "1";
+            was:x2 "2";
+            was:y2 "2".
+        
+        ?farm hmas:contains ?newSection1.
+        ?farm hmas:contains ?newSection2.
+        ?farm hmas:contains ?newSection3.
+        ?farm hmas:contains ?newSection4.
+        
+        ?newSection1 a td:Thing, was:Section;
+  			td:title "A section of the farm that is growing one type of crop.";
+  			td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];
+  			td:hasBase <http://localhost:1080/api/sections/1/>;
+     		was:locatedAt ?coordinates1;
+       		was:grows ?wheat.
+        ?newSection2 a td:Thing, was:Section;
+  			td:title "A section of the farm that is growing one type of crop.";
+  			td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];
+  			td:hasBase <http://localhost:1080/api/sections/2/>;
+     		was:locatedAt ?coordinates2;
+        	was:grows ?wheat.
+        ?newSection3 a td:Thing, was:Section;
+  			td:title "A section of the farm that is growing one type of crop.";
+  			td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];
+  			td:hasBase <http://localhost:1080/api/sections/3/>;
+     		was:locatedAt ?coordinates3;
+        	was:grows ?corn.
+        ?newSection4 a td:Thing, was:Section;
+  			td:title "A section of the farm that is growing one type of crop.";
+  			td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];
+  			td:hasBase <http://localhost:1080/api/sections/4/>;
+     		was:locatedAt ?coordinates4;
+            was:grows ?corn.
+    }.
+} WHERE {
+	?farm a was:Farm.
+    ?wheat a was:Wheat.
+    ?corn a was:Corn.
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection1)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection2)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection3)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection4)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#coordinates-", strUUID())) AS ?coordinates1)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#coordinates-", strUUID())) AS ?coordinates2)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#coordinates-", strUUID())) AS ?coordinates3)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#coordinates-", strUUID())) AS ?coordinates4)
+}
