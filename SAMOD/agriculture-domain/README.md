@@ -36,4 +36,3 @@ The tractors are operated by two autonomous agents: An agent that monitors the c
 - **IrrigateAffordance**: An affordance offerred by the environment to agents for irrigating the soil. (probably the 4 section coordinates)
 - **Coordinates**: A set of 4 coordinates [X1,Y1,X2,Y2] that define the opposite corners of a square section at points [X1,Y1] and [X2,Y2].
 - **SoilMoisture**: The level of moisture in soil.
-- *Complete the glossary for definiting terms required to model the motivating scenario of the domain. These terms will then be formally defined in your TBox.*
