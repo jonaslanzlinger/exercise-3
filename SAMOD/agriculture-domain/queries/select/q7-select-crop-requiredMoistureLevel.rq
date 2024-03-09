@@ -4,8 +4,7 @@ PREFIX td: <https://www.w3.org/2019/wot/td#>
 
 SELECT ?requiredMoistureLevel WHERE {
 GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#> {
-   bind (<https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#crop-6df5439c-84c9-4f3f-8547-0654f20741c5> as ?crop)
-   
+   bind (<https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#crop-579605c9-1f98-4d6d-8695-f4d4ea230ee3> as ?crop)
         ?crop a was:Crop.
         ?crop was:requiredMoistureLevel ?requiredMoistureLevel.
  }

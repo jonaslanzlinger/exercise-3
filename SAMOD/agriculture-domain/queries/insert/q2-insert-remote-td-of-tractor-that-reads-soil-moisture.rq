@@ -9,7 +9,7 @@ INSERT {
     }.
 } WHERE {
     ?farm a was:Farm.
-    ?farm hmas:contains ?tractor1.
+    ?farm was:contains ?tractor1.
     ?tractor1 a was:Tractor.
     ?tractor1 td:hasActionAffordance ?aff1.
     ?aff1 a was:ReadSoilMoistureAffordance.

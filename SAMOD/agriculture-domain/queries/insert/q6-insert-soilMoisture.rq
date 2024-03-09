@@ -1,0 +1,32 @@
+PREFIX was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#>
+PREFIX td: <https://www.w3.org/2019/wot/td#>
+
+INSERT {
+    GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#>
+    {
+        ?newSoilMoisture1 a was:SoilMoisture;
+            td:title "A moisture level for a section.";
+	        td:hasBase <http://localhost:1080/api/soilMoisture/1/>;
+            was:currentMoistureLevel "31".
+
+        ?newSoilMoisture2 a was:SoilMoisture;
+            td:title "A moisture level for a section.";
+	        td:hasBase <http://localhost:1080/api/soilMoisture/2/>;
+            was:currentMoistureLevel "32".
+
+        ?newSoilMoisture3 a was:SoilMoisture;
+            td:title "A moisture level for a section.";
+	        td:hasBase <http://localhost:1080/api/soilMoisture/3/>;
+            was:currentMoistureLevel "33".
+
+        ?newSoilMoisture4 a was:SoilMoisture;
+            td:title "A moisture level for a section.";
+	        td:hasBase <http://localhost:1080/api/soilMoisture/4/>;
+            was:currentMoistureLevel "34".
+    }.
+} WHERE {
+	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#soilMoisture-", strUUID())) AS ?newSoilMoisture1)
+	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#soilMoisture-", strUUID())) AS ?newSoilMoisture2)
+	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#soilMoisture-", strUUID())) AS ?newSoilMoisture3)
+	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#soilMoisture-", strUUID())) AS ?newSoilMoisture4)
+}

@@ -10,8 +10,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 INSERT {
     GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#>
     {
-        ?farm hmas:contains ?newTractor1.
-        ?farm hmas:contains ?newTractor2.
+        ?farm was:contains ?newTractor1.
+        ?farm was:contains ?newTractor2.
+		  
         ?newTractor1 a td:Thing, was:Tractor;
   			td:title "A tractor that can be used for monitoring the moisture level of soil in a farm.";
   			td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];

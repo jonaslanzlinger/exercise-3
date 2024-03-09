@@ -91,7 +91,7 @@ public class FarmKG extends Artifact {
 
         // constructs query
         String queryStr = PREFIXES + "SELECT ?" + tdVariableName + " WHERE {\n" +
-                "<" + farm + "> hmas:contains ?thing.\n" +
+                "<" + farm + "> was:contains ?thing.\n" +
                 "?thing td:hasActionAffordance ?aff.\n" +
                 "?thing hmas:hasProfile ?" + tdVariableName + ".\n" +
                 "?aff a <" + offeredAffordance + ">.} LIMIT 1";
@@ -144,7 +144,7 @@ public class FarmKG extends Artifact {
         // constructs query
         String queryStr = PREFIXES + "SELECT ?section WHERE {\n" +
                 "<" + farm + "> a was:Farm.\n" +
-                "<" + farm + "> hmas:contains ?section.\n" +
+                "<" + farm + "> was:contains ?section.\n" +
                 "?section a was:Section. }";
 
         JsonArray sectionBindings = executeQuery(queryStr);

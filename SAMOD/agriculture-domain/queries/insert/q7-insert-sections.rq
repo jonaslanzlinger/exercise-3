@@ -1,0 +1,73 @@
+PREFIX was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#>
+PREFIX hmas: <https://purl.org/hmas/>
+PREFIX td: <https://www.w3.org/2019/wot/td#>
+PREFIX wotsec: <https://www.w3.org/2019/wot/security#>
+PREFIX htv: <http://www.w3.org/2011/http#>
+PREFIX hctl: <https://www.w3.org/2019/wot/hypermedia#>
+PREFIX js: <https://www.w3.org/2019/wot/json-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+    GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#>
+    {
+        ?newSection1 a td:Thing, was:Section;
+				td:title "A section of the farm that is growing one type of crop.";
+				td:hasBase <http://localhost:1080/api/sections/1/>;
+				was:locatedAt ?coordinates1;
+       		was:grows ?wheat;
+				was:hasSoilMoisture ?soilMoisture1.
+
+        ?newSection2 a td:Thing, was:Section;
+				td:title "A section of the farm that is growing one type of crop.";
+				td:hasBase <http://localhost:1080/api/sections/2/>;
+				was:locatedAt ?coordinates2;
+				was:grows ?wheat;
+				was:hasSoilMoisture ?soilMoisture2.
+
+        ?newSection3 a td:Thing, was:Section;
+				td:title "A section of the farm that is growing one type of crop.";
+				td:hasBase <http://localhost:1080/api/sections/3/>;
+				was:locatedAt ?coordinates3;
+				was:grows ?corn;
+				was:hasSoilMoisture ?soilMoisture3.
+				
+        ?newSection4 a td:Thing, was:Section;
+				td:title "A section of the farm that is growing one type of crop.";
+				td:hasBase <http://localhost:1080/api/sections/4/>;
+				was:locatedAt ?coordinates4;
+            was:grows ?corn;
+				was:hasSoilMoisture ?soilMoisture4.
+
+        ?farm was:contains ?newSection1.
+        ?farm was:contains ?newSection2.
+        ?farm was:contains ?newSection3.
+        ?farm was:contains ?newSection4.
+    }.
+} WHERE {
+	?farm a was:Farm.
+	?wheat a was:Wheat.
+	?corn a was:Corn.
+
+	?coordinates1 a was:Coordinates.
+	?coordinates1 td:hasBase <http://localhost:1080/api/coordinates/1/>.
+	?coordinates2 a was:Coordinates.
+	?coordinates2 td:hasBase <http://localhost:1080/api/coordinates/2/>.
+	?coordinates3 a was:Coordinates.
+	?coordinates3 td:hasBase <http://localhost:1080/api/coordinates/3/>.
+	?coordinates4 a was:Coordinates.
+	?coordinates4 td:hasBase <http://localhost:1080/api/coordinates/4/>.
+
+	?soilMoisture1 a was:SoilMoisture.
+	?soilMoisture1 td:hasBase <http://localhost:1080/api/soilMoisture/1/>.
+	?soilMoisture2 a was:SoilMoisture.
+	?soilMoisture2 td:hasBase <http://localhost:1080/api/soilMoisture/2/>.
+	?soilMoisture3 a was:SoilMoisture.
+	?soilMoisture3 td:hasBase <http://localhost:1080/api/soilMoisture/3/>.
+	?soilMoisture4 a was:SoilMoisture.
+	?soilMoisture4 td:hasBase <http://localhost:1080/api/soilMoisture/4/>.
+
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection1)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection2)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection3)
+  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-", strUUID())) AS ?newSection4)
+}

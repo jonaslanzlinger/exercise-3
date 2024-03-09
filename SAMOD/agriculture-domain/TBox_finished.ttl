@@ -41,6 +41,15 @@ was:grows rdf:type owl:ObjectProperty ,
           rdfs:label "Grows"@en .
 
 
+###  https://was-course.interactions.ics.unisg.ch/farm-ontology#hasMoistureLevel
+was:hasMoistureLevel rdf:type owl:ObjectProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain was:Section ;
+                     rdfs:range was:SoilMoisture ;
+                     rdfs:comment "An object property linking the current moisture level of a section."@en ;
+                     rdfs:label "hasMoistureLevel"@en .
+
+
 ###  https://was-course.interactions.ics.unisg.ch/farm-ontology#locatedAt
 was:locatedAt rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
@@ -53,6 +62,15 @@ was:locatedAt rdf:type owl:ObjectProperty ,
 #################################################################
 #    Data properties
 #################################################################
+
+###  https://was-course.interactions.ics.unisg.ch/farm-ontology#currentMoistureLevel
+was:currentMoistureLevel rdf:type owl:DatatypeProperty ,
+                                  owl:FunctionalProperty ;
+                         rdfs:domain was:SoilMoisture ;
+                         rdfs:range xsd:integer ;
+                         rdfs:comment "The current moisture level of a section."@en ;
+                         rdfs:label "CurrentMoistureLevel"@en .
+
 
 ###  https://was-course.interactions.ics.unisg.ch/farm-ontology#requiredMoistureLevel
 was:requiredMoistureLevel rdf:type owl:DatatypeProperty ;
@@ -185,6 +203,11 @@ was:Section rdf:type owl:Class ;
                               owl:onProperty was:grows ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass was:Crop
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty was:hasMoistureLevel ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass was:SoilMoisture
                             ] ;
             rdfs:comment "A section of land within the farm."@en ;
             rdfs:label "Section"@en .
@@ -192,6 +215,11 @@ was:Section rdf:type owl:Class ;
 
 ###  https://was-course.interactions.ics.unisg.ch/farm-ontology#SoilMoisture
 was:SoilMoisture rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty was:currentMoistureLevel ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:integer
+                                 ] ;
                  rdfs:comment "The level of moisture in soil."@en ;
                  rdfs:label "SoilMoisture"@en .
 

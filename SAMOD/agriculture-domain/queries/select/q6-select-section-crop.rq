@@ -4,7 +4,7 @@ PREFIX td: <https://www.w3.org/2019/wot/td#>
 
 SELECT ?crop WHERE {
 GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#> {
-   bind (<https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-959933bd-0dda-4ad9-8a29-5da8d7e5f83e> as ?section)
+   bind (<https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#section-32d710ac-1645-4e2d-a966-aa0e2d520b2f> as ?section)
    ?section a was:Section.
    ?section was:grows ?crop.
  }

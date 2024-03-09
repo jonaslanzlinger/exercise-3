@@ -4,9 +4,9 @@ PREFIX td: <https://www.w3.org/2019/wot/td#>
 
 SELECT ?td WHERE {
 GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#> {
-   bind (<https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#farm-e679b361-880b-4380-baec-0cf194413334> as ?farm)
+   bind (<https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-jonas#farm-fbc84105-b376-4a91-9282-1bb4f3dbc8c9> as ?farm)
    ?farm a was:Farm.
-   ?farm hmas:contains ?tractor.
+   ?farm was:contains ?tractor.
    ?tractor a was:Tractor. 
    ?tractor td:hasActionAffordance ?aff.
    ?tractor hmas:hasProfile ?td.
